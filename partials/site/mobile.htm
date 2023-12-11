@@ -1,0 +1,38 @@
+[staticMenu mobileMenu]
+code = "main"
+==
+<div id="mobile_header" class="row">
+    <div class="col-2 custom-nav-mobile">
+        <div class="hamburger-menu-container">
+            <a class="open-menu-button">
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </a>
+        </div>
+    </div>
+    <div class="col-10">
+        <a class="navbar-brand" href="/">
+            <img src="{{ 'logo.webp'|media }}" class="logo-mobile" />
+        </a>
+    </div>
+</div>
+
+<div class="inside-mobile-menu-container">
+    <div class="menu-heading">
+        <div class="close-button-container">
+        <a class="menu-close-button">
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </a>
+        </div>
+        <a class="navbar-brand" href="/">
+            <img src="{{ 'logo.webp'|media }}" class="logo-mobile" />
+        </a>
+    </div>
+    <div class="menu-content">
+        <div class="menu-mobile-container">
+            {% component 'mobileMenu' %}
+        </div>
+    </div>
+</div>

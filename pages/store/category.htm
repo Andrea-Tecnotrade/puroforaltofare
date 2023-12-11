@@ -1,0 +1,42 @@
+url = "/store/:slug*"
+layout = "default"
+title = "Category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/category/:slug*"
+seo_title = "Category"
+seo_description = "Category"
+robot_index = "index"
+robot_follow = "follow"
+
+[products]
+category = ":slug"
+filterComponent = "productsFilter"
+setPageTitle = 1
+includeVariants = 1
+includeChildren = 1
+perPage = 9
+paginate = 1
+sort = "name"
+
+[productsFilter]
+category = ":slug"
+includeChildren = 1
+includeVariants = 1
+showPriceFilter = 1
+showBrandFilter = 1
+showOnSaleFilter = 1
+includeSliderAssets = 1
+==
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12 col-lg-3">
+            {% component 'productsFilter' %}
+        </div>
+        <div class="col-12 col-lg-9">
+            <h2 class="pl-4">{{ products.category.name }}</h2>
+            {% component 'products' %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,214 @@
+.post {
+    width: 48%;
+    padding-bottom: 2rem;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+.post:hover .featured-images img {
+    transform: scale(1.1);
+}
+.post-list {
+    .post-container {
+        padding: 2rem;
+        z-index: 1;
+        width: 50%;
+        //min-height: 380px;
+    }
+    .post:first-child {
+        width: 98%;
+    }
+    div {
+        position: relative;
+    }
+    h4 {
+        min-height: 64px;
+    }
+    h4 a {
+        font-size: 25px;
+        position: absolute;
+        top: 70px;
+            left: 30px;
+        border-left: 4px solid #fff;
+        line-height: 32px;
+        margin-bottom: 15px;
+        font-family:  @font;
+        color: #fff !important;
+        padding: 10px;
+        background: rgba(0,0,0,.6);
+        border-radius: 0 1rem 1rem 0;
+            width: 90%;
+    }
+    .category {
+        background-color: #f7f7f7;
+        text-transform: uppercase;
+        line-height: 1.5;
+        padding: 0px 15px;
+        border-top-left-radius: 0;
+    }
+    .category a {
+        font-weight: @font-weight;
+        font-size: 12px;
+    }
+    .info {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #666;
+        font-weight: @font-weight;
+        font-family:  @font;
+        display: none;
+    }
+    .info:before {
+          content: "Postato il";
+    }
+    .featured-images {
+        overflow: hidden;
+        border-radius: 5px;
+        height: 300px;
+    }
+    .featured-images img {
+        max-width: 100%;
+        transition: 1s all;
+        overflow: hidden;
+    }
+}
+@media screen and (max-width: 768px) {
+    .post-list {
+        .post-container {
+            width: 100%;
+        }
+    }
+}
+// SINGOLO POST
+.blog-post {
+    .content img {
+        max-width: 100%;
+    }
+    .category,.category a, .info, .views {
+        display: inline-block;
+        color: #666666;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: @font-weight;
+        font-family:  @font;
+    }
+    .category a {
+        padding-right: 2rem;
+    }
+    .info {
+        padding-right: 2rem;
+    }
+    .views {
+        display: none;
+    }
+    .category:before {
+          content: "\F3D8";
+          font-family: "bootstrap-icons";
+          padding-right: 5px;
+          top: 2px;
+          position: relative;
+    }
+    .info:before {
+          content: "\F1E8";
+          font-family: "bootstrap-icons";
+          padding-right: 5px;
+          top: 2px;
+          position: relative;
+    }
+    .views:before {
+          content: "\F33E";
+          font-family: "bootstrap-icons";
+          padding-right: 5px;
+          top: 2px;
+          position: relative;
+    }
+    h2.title {
+        position: relative;
+        padding-left:25px;
+        margin-bottom: 20px;
+        font-size:22px;
+        z-index: 1;
+        &:before {
+            border-top: 2px solid #dfdfdf;
+            content:"";
+            margin: 0 auto;
+            position: absolute;
+            top: 50%; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+        }
+        span { 
+            background: #F9FAFF; 
+            padding: 0 15px; 
+        }
+    }
+}
+.tag-list,.tag-list-bottom {
+    display: inline-block;
+    padding-left:0rem;
+    ul {
+        padding-left: 0;
+    }
+}
+.tag-list li,.tag-list-bottom li {
+    list-style: none;
+    display: inline-block;
+    a {
+        font-size: 15px !important;
+        color: #222;
+        display: inline-block;
+        border: 1px solid #dbdbdb;
+        padding: 0 18px;
+        border-radius: 5px;
+        height: 35px;
+        line-height: 35px;
+        margin-right: 5px;
+        font-family:  @font;
+        font-weight: @font-weight;
+        margin-bottom: 10px;
+        transition: .4s;
+    }
+    a:hover {
+        color: #fff !important;
+        background: #231D19;
+    }
+}
+.popular .tag-list li {
+    font-size: 15px !important;
+    display: inline-block;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 5px;
+    font-family: @font;
+    font-weight: @font-weight;
+    margin-bottom: 10px;
+    transition: .4s;
+    .badge {
+        color: #000;
+        font-size: 1rem;
+        background: @brand-warning;
+        margin-right: 7px;
+        top: -1px;
+        position: relative;
+    }
+    a {
+        border: 0;
+        padding: 0 10px;
+        margin-right: 0;
+    }
+}
+
+.tag-posts {
+    li {
+        width: 50%;
+        img {
+            max-width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .post {
+        width: 100%;
+        padding-bottom: 1rem;
+    }
+}

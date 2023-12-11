@@ -1,0 +1,63 @@
+[staticMenu]
+code = "main"
+
+[sitePicker]
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 0
+==
+{% placeholder headerBefore %}
+
+<div class="header-top d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center py-2">
+                <p>Benvenuti in {{ global.company_name }} </p>
+                <div class="flags">
+                    {% set availableSites = sitePicker.sites %}
+                    {% for site in sitePicker.sites %}
+                        <a href="{{ site.url }}"><img src="{{ site.locale | media }}.webp" width="20" height="20" alt="cambio lingua" aria-label="Switch the language"></a>
+                    {% endfor %}    
+                </div>
+            </div>
+
+            <div class="col-4 relative right py-2">
+                {% component 'searchInput' %}
+            </div>
+            <div class="col-2 relative right py-2">
+                {% partial 'site/social' %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header-main">
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-12 col-lg-3 logo d-flex align-items-center">
+                <a href="/">
+                    <img src="{{ 'logo.webp'|media }}" width="1076" height="221" alt="Home Page" />
+                </a>
+            </div>
+            <div class="col-12 col-lg-6 center">
+                <nav>
+                    {% component 'staticMenu' %}
+                </nav>
+            </div>
+            <div class="col-12 col-lg-3 right py-2">
+                {% partial 'accountButton/default' %}
+                {% if global.show_wishlist %}
+                    {% partial 'site/wishlist' %}
+                {% endif %}
+                {% if global.show_cart %}
+                    {% partial 'cartButton/default' %}
+                {% endif %}
+            </div>
+        </div>        
+    </div>
+</div>
+<div class="hide-on-large">
+    {% partial 'site/mobile' %}
+</div>
+{% placeholder headerAfter %}

@@ -1,0 +1,84 @@
+url = "/blog/:page?"
+layout = "default"
+title = "Blog"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 12
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/blog-category"
+postPage = "blog/blog-post"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/blog-category"
+
+[viewBag]
+seo_title = "Blog"
+seo_description = "Blog"
+robot_index = "index"
+robot_follow = "follow"
+==
+<div class="container py-4">
+    <div class="row">
+		<div class="col-12 text-center">
+			<h1>Il nostro Blog</h1>
+			<p class="small">Buona lettura!</p>
+        </div>
+    </div>
+</div>
+{% set posts = blogPosts.posts %}
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            {% set posts = blogPosts.posts %}
+            <div class="post-list row">
+                {% for post in posts %}
+                    <div class="post-container">
+                        <div class="featured-images text-center"> 
+                            <a href="{{ post.url }}" aria-label="{{ post.title }}">
+                                <img data-src="{{ image.filename }}" width="865" height="481" src="{{ post.metadata.principal_image|media|resize(865, 481, { mode: 'crop' })| webp }}" alt="{{ post.title }}">
+                            </a>
+                        </div>
+                        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                        <p class="info">
+                            Postato il 
+                            {% if post.categories|length %} in {% endif %}
+                            {% for category in post.categories %}
+                                <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                            on {{ post.published_at|date('M d, Y') }}
+                        </p>
+            
+                        <p class="excerpt">{{ post.summary|raw }}</p>
+                    </div>
+                {% else %}
+                    <div class="no-data">{{ blogPosts.noPostsMessage }}</div>
+                {% endfor %}
+            </div>
+            
+            {% if posts.lastPage > 1 %}
+                <ul class="pagination">
+                    {% if posts.currentPage > 1 %}
+                        <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+                    {% endif %}
+            
+                    {% for page in 1..posts.lastPage %}
+                        <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                            <a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+            
+                    {% if posts.lastPage > posts.currentPage %}
+                        <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="col-12 col-lg-3">
+            {% component 'blogCategories' %}
+        </div>
+	</div>
+</div>

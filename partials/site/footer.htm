@@ -1,0 +1,46 @@
+[staticMenu]
+code = "main"
+==
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 col-lg-6 pt-3">
+            <h4>{{ global.company_name }}</h4>
+            <p>{{ global.address }}<br>
+            {{ global.cap }} {{ global.town }} ({{ global.province }})<br>
+            {{ global.state }}<br><br>
+            <a href="mailto:{{ global.email }}">{{ global.email }}</a><br>
+            <a href="mailto:{{ global.pec }}">{{ global.pec }}</a></p>
+            <div class="mt-5 social">
+                {% partial 'site/social' %}
+            </div>
+        </div>
+        <div class="col-12 col-lg-3 pt-3">
+            <h4>Links</h4>
+            {% component 'staticMenu' %}
+        </div>
+        <div class="col-12 col-lg-3 pt-3">
+            <h4>Legal</h4>
+            <p>P.I. {{ global.vat }}<br>
+            Cap. Soc. € 10.000,00 i.v.<br>
+            REA BO - 123456<br>
+            SDI {{ global.sdi }}<br>
+            &copy; {{ "now"|date("Y") }} {{ global.company_name }}</p>
+            <a href="/privacy-policy">Privacy Policy</a><br>
+            <a href="/cookie-policy">Cookie Policy</a><br>
+        </div>
+        
+    </div>
+</div>
+<div class="container pt-2 pb-5">
+    <div class="row">
+        <div class="col-12 center credits">
+            <a href="https://tecnotrade.com" title="Sviluppo web e siti" alt="sviluppo web bologna">made with <i class="bi bi-suit-heart-fill"></i> by tecnotrade</a>
+        </div>
+    </div>
+</div>
+<div class="call">
+    <a href="tel:"><i class="bi bi-telephone-fill"></i></a>
+</div>
+<button type="button" id="btn-back-to-top">
+  <i class="bi bi-arrow-up-circle-fill"></i>
+</button>

@@ -1,0 +1,35 @@
+url = "/contatti"
+layout = "default"
+title = "Contatti"
+
+[renderForm]
+formCode = "contact-form"
+
+[leafletMap]
+width = "100%"
+height = "800px"
+
+[viewBag]
+seo_title = "Contatti"
+seo_description = "Contatti"
+robot_index = "index"
+robot_follow = "follow"
+==
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <h2>{{ global.company_name }}</h2>
+            <p>{{ global.address }}<br>
+            {{ global.cap }} {{ global.town }} ({{ global.province }})<br>
+            {{ global.state }}<br><br>
+            <a href="mailto:{{ global.email }}">{{ global.email }}</a><br>
+            <a href="mailto:{{ global.pec }}">{{ global.pec }}</a></p>
+            
+        </div>
+        <div class="col-12 col-lg-8">
+            <h1>Contatti</h1>
+            {% component 'renderForm' %}
+        </div>
+    </div>
+</div>
+{% component 'leafletMap' %}
